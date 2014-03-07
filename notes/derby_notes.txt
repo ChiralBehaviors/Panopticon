@@ -1,0 +1,1 @@
+must set property and then REBOOT THE WHOLE SERVER, not just reconnect. Boo
