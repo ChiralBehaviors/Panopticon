@@ -1,1 +1,4 @@
 must set property and then REBOOT THE WHOLE SERVER, not just reconnect. Boo
+
+starting to think that creating derby db should be done in java rather than liquibase
+table stuff can be done in liquibase. Maybe.
