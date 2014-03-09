@@ -5,10 +5,16 @@
     <artifactId>panopticon.app</artifactId>
     <version>0.0.1-SNAPSHOT</version>
   </parent>
-  <groupId>com.chiralbehaviors.panopticon</groupId>
   <artifactId>create-db</artifactId>
-  <version>0.0.1-SNAPSHOT</version>
   <name>Create Database</name>
+  
+  <properties>
+        <derby.server>localhost</derby.server>
+        <derby.port>1527</derby.port>
+        <derby.login>derby</derby.login>
+        <derby.password>derby</derby.password>
+        <create.db>true</create.db>
+    </properties>
   
   <dependencies>
         <dependency>
