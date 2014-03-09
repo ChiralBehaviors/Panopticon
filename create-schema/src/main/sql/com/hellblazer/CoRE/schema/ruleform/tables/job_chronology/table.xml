@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+    http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.0.xsd"
+>
+
+    <changeSet author="hhildebrand" id="1390879803225-23">
+        <createTable remarks="Tracks when status changes occur on any given job" tableName="ruleform.job_chronology">
+            <column autoIncrement="true" name="id" remarks="Unique identifier" type="BIGSERIAL">
+                <constraints primaryKey="true" primaryKeyName="job_chronology_pkey" />
+            </column>
+            <column name="job" remarks="The Job whose chronology is being specified" type="INT8">
+                <constraints nullable="false" />
+            </column>
+            <column defaultValueComputed="('now'::text)::timestamp(6) with time zone" name="time_stamp" remarks="The time at which a status change occurs"
+                type="TIMESTAMPTZ"
+            >
+                <constraints nullable="false" />
+            </column>
+            <column name="status" remarks="The status the job changed to at the specified time" type="INT8">
+                <constraints nullable="false" />
+            </column>
+            <column name="notes" remarks="Indicates any additional information about the status change" type="VARCHAR(10485760)">
+                <constraints nullable="false" />
+            </column>
+            <column name="updated_by" remarks="The agency that last updated this rule" type="INT8">
+                <constraints nullable="false" />
+            </column>
+            <column defaultValueComputed="('now'::text)::timestamp(6) with time zone" name="update_date" remarks="The date this rule was last changed"
+                type="TIMESTAMPTZ"
+            >
+                <constraints nullable="false" />
+            </column>
+            <column autoIncrement="true" name="sequence" type="BIGSERIAL">
+                <constraints nullable="false" />
+            </column>
+        </createTable>
+        <rollback>
+            <dropTable tableName="ruleform.job_chronology" />
+        </rollback>
+    </changeSet>
+    <changeSet author="hhildebrand" id="1390879803225-164">
+        <addForeignKeyConstraint baseColumnNames="job" baseTableName="ruleform.job_chronology" constraintName="job_chronology_job_fkey"
+            deferrable="true" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="CASCADE" referencedColumnNames="id"
+            referencedTableName="ruleform.job" />
+    </changeSet>
+    <changeSet author="hhildebrand" id="1390879803225-165">
+        <addForeignKeyConstraint baseColumnNames="status" baseTableName="ruleform.job_chronology" constraintName="job_chronology_status_fkey"
+            deferrable="true" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="CASCADE" referencedColumnNames="id"
+            referencedTableName="ruleform.status_code" />
+    </changeSet>
+    <changeSet author="hhildebrand" id="1390879803225-166">
+        <addForeignKeyConstraint baseColumnNames="updated_by" baseTableName="ruleform.job_chronology"
+            constraintName="job_chronology_updated_by_fkey" deferrable="true" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="CASCADE"
+            referencedColumnNames="id" referencedTableName="ruleform.agency" />
+    </changeSet>
+    <changeSet author="hhildebrand" id="1390879803225-385">
+        <addUniqueConstraint columnNames="job, sequence" constraintName="job_chronology_job_sequence_key" deferrable="false"
+            disabled="false" initiallyDeferred="false" tableName="ruleform.job_chronology" />
+    </changeSet>
+    <changeSet author="hhildebrand" id="1390879803225-465">
+        <createIndex indexName="job_chronology_updated_by_fkey_idx" tableName="ruleform.job_chronology" unique="false">
+            <column name="updated_by" />
+        </createIndex>
+    </changeSet>
+</databaseChangeLog>

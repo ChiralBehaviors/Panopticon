@@ -1,13 +1,52 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-  <modelVersion>4.0.0</modelVersion>
-  <parent>
-    <groupId>com.chiralbehaviors.panopticon</groupId>
-    <artifactId>panopticon.app</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
-  </parent>
-  <groupId>com.chiralbehaviors.panopticon</groupId>
-  <artifactId>create-schema</artifactId>
-  <version>0.0.1-SNAPSHOT</version>
-  <name>Create Schema</name>
-  <description>Creates the database schema in the derby db using liquibase</description>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>com.chiralbehaviors.panopticon</groupId>
+		<artifactId>panopticon.app</artifactId>
+		<version>0.0.1-SNAPSHOT</version>
+	</parent>
+	<artifactId>create-schema</artifactId>
+	<name>Create Schema</name>
+	<description>Creates the database schema in the derby db using liquibase</description>
+	
+	<properties>
+        <model.jar.name>create-schema</model.jar.name>
+        <model.jar.file>${project.build.directory}/${project.artifactId}-${project.version}.${project.packaging}</model.jar.file>
+        <main.sql>${project.basedir}/src/main/sql</main.sql>
+        <java.net.preferIPv4Stack>true</java.net.preferIPv4Stack>
+    </properties>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.liquibase</groupId>
+				<artifactId>liquibase-maven-plugin</artifactId>
+				<dependencies>
+					<dependency>
+						<groupId>org.apache.derby</groupId>
+						<artifactId>derby</artifactId>
+						<version>10.10.1.1</version>
+					</dependency>
+				</dependencies>
+				<configuration>
+					<promptOnNonLocalDatabase>false</promptOnNonLocalDatabase>
+					<driver>${jdbc.driver}</driver>
+					<url>${jdbc.url}</url>
+					<username>${derby.login}</username>
+					<password>${derby.password}</password>
+					<changeLogFile>${main.sql}/com/hellblazer/CoRE/schema/core.xml</changeLogFile>
+					<verbose>false</verbose>
+				</configuration>
+				<executions>
+					<execution>
+						<phase>process-resources</phase>
+						<goals>
+							<goal>update</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+		</plugins>
+	</build>
 </project>

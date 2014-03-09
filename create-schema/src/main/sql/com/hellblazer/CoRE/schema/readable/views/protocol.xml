@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+    http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.0.xsd">
+
+    <changeSet id="1" author="hhildebrand">
+        <sql><![CDATA[
+            CREATE OR REPLACE VIEW readable.protocol AS 
+			 SELECT base_table.id,
+			   r.name AS requester, rs.name AS requested_service, 
+               rp.name AS requested_product, dt.name AS deliver_to, df.name AS deliver_from,
+               assign.name AS assign_to, s.name AS service, p.name AS product,
+			   base_table.copy_attributes, base_table.sequence_number, base_table.notes, 
+			   up.name AS updated_by, base_table.update_date
+			   FROM ruleform.protocol base_table
+               JOIN ruleform.product rs ON base_table.requested_service = rs.id
+			   JOIN ruleform.product rp ON base_table.requested_product = rp.id
+               JOIN ruleform.product s ON base_table.service = s.id
+               JOIN ruleform.product p ON base_table.product = p.id
+               JOIN ruleform.location dt ON base_table.deliver_to = dt.id
+               JOIN ruleform.location df ON base_table.deliver_from = df.id
+			   JOIN ruleform.agency assign ON base_table.assign_to = assign.id
+               JOIN ruleform.agency r ON base_table.requester = r.id
+			   JOIN ruleform.agency up ON base_table.updated_by = up.id;
+			
+			ALTER TABLE readable.protocol
+			  OWNER TO core;
+			GRANT ALL ON TABLE readable.protocol TO core;
+			GRANT SELECT ON TABLE readable.protocol TO core_read_write;
+			GRANT SELECT ON TABLE readable.protocol TO core_read_only;
+            ]]>
+        </sql>
+        <rollback>
+            <dropView viewName="readable.protocol" />
+        </rollback>
+    </changeSet>
+</databaseChangeLog>

@@ -6,12 +6,29 @@
 	<version>0.0.1-SNAPSHOT</version>
 	<name>Panopticon App</name>
 	<packaging>pom</packaging>
-	
+
+	<properties>
+		<derby.server>localhost</derby.server>
+		<derby.port>1527</derby.port>
+		<derby.login>derby</derby.login>
+		<derby.password>derby</derby.password>
+		<create.db>true</create.db>
+		<jdbc.driver>org.apache.derby.jdbc.ClientDriver</jdbc.driver>
+		<jdbc.url>jdbc:derby://${derby.server}:${derby.port}/core</jdbc.url>
+	</properties>
 	<modules>
-        <module>create-db</module>
-        <module>create-schema</module>
-        <module>panopticon-core</module>
-    </modules>
-    
-	
+		<module>create-db</module>
+		<module>create-schema</module>
+		<module>panopticon-core</module>
+	</modules>
+
+	<dependencies>
+		<dependency>
+			<groupId>org.apache.derby</groupId>
+			<artifactId>derbyclient</artifactId>
+			<version>10.10.1.1</version>
+		</dependency>
+	</dependencies>
+
+
 </project>
