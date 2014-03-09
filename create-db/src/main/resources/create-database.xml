@@ -16,7 +16,7 @@
 	<!-- <changeSet id="modify changelog column length" author="hparry"> <sql><![CDATA[ 
 		ALTER TABLE databasechangelog ALTER COLUMN filename TYPE varchar(500); ]]> 
 		</sql> </changeSet> -->
-	<changeSet id="update db perms" author="hparry">
+	<!-- <changeSet id="update db perms" author="hparry">
 		<sql><![CDATA[
             CALL SYSCS_UTIL.SYSCS_SET_DATABASE_PROPERTY(
                 'derby.database.sqlAuthorization', 'true');
@@ -29,13 +29,13 @@
 		<sql><![CDATA[
             
             CREATE ROLE core;
-            --ALTER ROLE core WITH NOSUPERUSER NOINHERIT CREATEROLE NOCREATEDB LOGIN PASSWORD 'password'; --'md5810605c085da5d85eee133466b57fabd';  -- password is "password"
-            --COMMENT ON ROLE core IS 'Owning role of the CoRE Ultra-Structure database';
-            --ALTER ROLE core SET search_path TO ruleform, public, sysadmin, core_admin, readable;
+            ALTER ROLE core WITH NOSUPERUSER NOINHERIT CREATEROLE NOCREATEDB LOGIN PASSWORD 'password'; comment out everything from here over 'md5810605c085da5d85eee133466b57fabd';   password is "password"
+            COMMENT ON ROLE core IS 'Owning role of the CoRE Ultra-Structure database';
+            ALTER ROLE core SET search_path TO ruleform, public, sysadmin, core_admin, readable;
             CREATE DATABASE core OWNER core TEMPLATE template1 ENCODING 'UTF8';
             ]]>
 		</sql>
-	</changeSet>
+	</changeSet> -->
 
 
 
