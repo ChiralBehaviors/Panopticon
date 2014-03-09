@@ -9,6 +9,7 @@
 	
 	<modules>
         <module>create-db</module>
+        <module>create-schema</module>
         <module>panopticon-core</module>
     </modules>
     
