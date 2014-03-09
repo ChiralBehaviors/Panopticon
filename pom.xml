@@ -2,9 +2,10 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.chiralbehaviors.panopticon</groupId>
-	<artifactId>panopticon-core</artifactId>
+	<artifactId>panopticon.app</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>Panopticon Core</name>
+	<name>Panopticon App</name>
+	<packaging>pom</packaging>
 	<properties>
 		<derby.server>localhost</derby.server>
 		<derby.port>1527</derby.port>
@@ -12,6 +13,12 @@
 		<derby.password>derby</derby.password>
 		<create.db>true</create.db>
 	</properties>
+	
+	<modules>
+        <module>create-db</module>
+        <module>panopticon-core</module>
+    </modules>
+    
 	<dependencies>
 		<dependency>
 			<groupId>junit</groupId>
