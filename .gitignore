@@ -7,3 +7,6 @@
 /target
 /derby.log
 *.prefs
+/.settings
+/.classpath
+/.project
