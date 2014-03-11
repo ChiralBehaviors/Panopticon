@@ -33,8 +33,7 @@
             <dbms type="derby" />
         </preConditions>
         <sql><![CDATA[
-             CREATE SCHEMA core_admin;
-            COMMENT ON SCHEMA core_admin IS 'Contains helpful functions and views for monitoring the CoRE system';
+             CREATE SCHEMA core_admin AUTHORIZATION core;
             ]]>
         </sql>
         <rollback>
@@ -68,8 +67,7 @@
             <dbms type="derby" />
         </preConditions>
         <sql><![CDATA[
-            CREATE SCHEMA readable; 
-            COMMENT ON SCHEMA readable IS 'Location of "readable" views of ruleforms';
+            CREATE SCHEMA readable AUTHORIZATION core; 
             ]]>
         </sql>
         <rollback>
@@ -103,8 +101,7 @@
             <dbms type="derby" />
         </preConditions>
         <sql><![CDATA[
-            CREATE SCHEMA ruleform; 
-            COMMENT ON SCHEMA ruleform IS 'Location of CoRE Ultra-Structure ruleform tables';
+            CREATE SCHEMA ruleform AUTHORIZATION core; 
             ]]>
         </sql>
         <rollback>
@@ -138,8 +135,7 @@
             <dbms type="derby" />
         </preConditions>
         <sql><![CDATA[
-            CREATE SCHEMA sysadmin;
-            COMMENT ON SCHEMA sysadmin IS 'This schema contains a variety of helpful views and functions to aid in the administration and monitoring of a database.';
+            CREATE SCHEMA core_sysadmin AUTHORIZATION core;
             ]]>
         </sql>
         <rollback>

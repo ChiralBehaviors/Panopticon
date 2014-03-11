@@ -7,7 +7,7 @@
     http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.0.xsd"
 >
 
-    <include
+    <!-- <include
         relativeToChangelogFile="true"
         file="tables/attribute/trigger-attribute_restrict_pinned.xml" />
     <include
@@ -219,6 +219,6 @@
         file="tables/unit_attribute_authorization/triggers.xml" />
     <include
         relativeToChangelogFile="true"
-        file="tables/unit_attribute/triggers.xml" />
+        file="tables/unit_attribute/triggers.xml" /> -->
 
 </databaseChangeLog>

@@ -7,10 +7,10 @@
     http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.0.xsd"
 >
 
-    <include
+    <!-- <include
         relativeToChangelogFile="true"
         file="triggerFunctions/restrict_pinned.xml" />
     <include
         relativeToChangelogFile="true"
-        file="triggerFunctions/set_update_date.xml" />
+        file="triggerFunctions/set_update_date.xml" /> -->
 </databaseChangeLog>

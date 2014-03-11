@@ -10,7 +10,7 @@
     <include
         relativeToChangelogFile="true"
         file="tables/agency-0.0.1.xml" />
-    <include
+    <!-- <include
         relativeToChangelogFile="true"
         file="tables/product-0.0.1.xml" />
     <include
@@ -198,5 +198,5 @@
         file="tables/unit_attribute_authorization.xml" />
     <include
         relativeToChangelogFile="true"
-        file="tables/access_authorization.xml" />
+        file="tables/access_authorization.xml" /> -->
 </databaseChangeLog>

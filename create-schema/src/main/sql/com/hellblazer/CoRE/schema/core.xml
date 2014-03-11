@@ -29,11 +29,11 @@
     <include
         relativeToChangelogFile="true"
         file="ruleform/ruleform.xml" />
-    <include
+    <!-- <include
         relativeToChangelogFile="true"
         file="core_admin/core_admin.xml" />
     <include
         relativeToChangelogFile="true"
-        file="readable/readable.xml" />
+        file="readable/readable.xml" /> -->
 
 </databaseChangeLog>

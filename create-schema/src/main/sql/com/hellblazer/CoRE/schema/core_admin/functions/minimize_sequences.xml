@@ -7,7 +7,7 @@
 
 	<changeSet id="1" author="hhildebrand">
 		<preConditions>
-			<dbms type="postgresql" />
+			<dbms type="derby" />
 		</preConditions>
 		
 		<sql splitStatements="false"><![CDATA[

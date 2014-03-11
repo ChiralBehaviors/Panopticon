@@ -6,7 +6,7 @@
     http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.0.xsd">
 
 	<preConditions>
-		<dbms type="postgresql" />
+		<dbms type="derby" />
 	</preConditions>
 	<include relativeToChangelogFile="true"
 		file="functions/minimize_sequences.xml" />

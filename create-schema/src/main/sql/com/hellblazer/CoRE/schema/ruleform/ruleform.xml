@@ -9,12 +9,13 @@
     <include
         relativeToChangelogFile="true"
         file="functions.xml" />
+    <!-- taken out for now until I feel like going through derby roles
     <include
         relativeToChangelogFile="true"
-        file="roles.xml" />
-    <include
+        file="roles.xml" /> -->
+    <!-- <include
         relativeToChangelogFile="true"
-        file="domains.xml" />
+        file="domains.xml" /> -->
     <include
         relativeToChangelogFile="true"
         file="tables.xml" />
